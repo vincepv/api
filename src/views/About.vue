@@ -1,22 +1,12 @@
 <template>
   <h1>A propos</h1>
-  <PokemonDetail 
-    id="1"
-    name="HD"
-    order="17" 
-    weight="61"
-  />
-
-  <p>Hello</p>
+  <h2>Connaissez-vous vraiment les pokemons ?</h2>
+  <p>Plus de 1000 pokémons, sans compter les extensions...Devenez incollable sur la saga des pokemons.</p>
   
 
 </template>
 
 <script setup>
-import PokemonDetail from "@/component/PokemonDetail.vue"
-
-import axios from "axios";
-import { ref } from 'vue'
 
 
 
