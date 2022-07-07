@@ -1,5 +1,5 @@
 <template>
-  <h1 v-if="isLogIn">You are login !!</h1>
+  <h1 v-if="store.IsLog">You are login !!</h1>
   <h1 v-else>Your are not login. Please provide login/password</h1>
   <label for="username">User Name</label>
   <input v-model="userNameInput" type="text" name="username" id="username" />
@@ -8,6 +8,7 @@
   <input v-model="passWordInput" type="password" name="password" id="password"/>
 
   <button @click="LogIn()">Submit</button>
+  <button @click="LogOut()">Log Out</button>
   <p>This is the result : {{ items }}</p>
 
 
@@ -16,8 +17,9 @@
 <script setup>
 import axios from "axios";
 import { ref } from "vue";
+import {useLogInStore} from "@/store/LogInStore.js"
 
-const isLogIn = ref(false);
+const store = useLogInStore();
 const userNameInput = ref('');
 const passWordInput = ref('');
 
@@ -36,11 +38,18 @@ const LogIn = () => {
     .then(function (response) {
       console.log(response);
       items.value = response.data;
-      isLogIn.value = true
+      store.IsLog = true
+      
     })
     .catch(function (error) {
       console.log(error);
     });
 };
+
+const LogOut = () => {
+  store.$reset()
+  location.reload();
+}
+
 </script>
 

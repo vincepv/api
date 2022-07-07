@@ -4,8 +4,7 @@
   <h3>Listes des pokemons</h3>
   <ul>
     <li v-for="item in items.results" :key="item"> 
-        {{item.name}}
-        <a :href="item.url">En savoir plus </a> 
+        {{item.name}} 
     </li>
   </ul>
   <button @click="previous()">Précédent</button>

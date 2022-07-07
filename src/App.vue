@@ -1,16 +1,29 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+import {useLogInStore} from "@/store/LogInStore.js"
+import LogIn from "@/views/LogIn.vue";
+
+const store =  useLogInStore()
+
+const isLog = false
+
 </script>
 
 <template>
-  <nav>
+  <template v-if ="store.IsLog" >
+    <nav>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/login">Login</RouterLink>
-    <RouterLink to="/about">A propos</RouterLink>
-    <RouterLink to="/detail">Pokemon</RouterLink>
-  </nav>
+    </nav>
 
-  <RouterView />
+    <RouterView />
+  </template>
+
+  <template v-else>
+    <LogIn />
+  </template>
+
+  
 </template>
 
 
